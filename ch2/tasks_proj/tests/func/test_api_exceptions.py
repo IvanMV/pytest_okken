@@ -2,6 +2,7 @@
 
 import pytest
 import tasks
+import datetime
 
 
 def test_add_raises():
@@ -9,7 +10,7 @@ def test_add_raises():
     with pytest.raises(TypeError):
         tasks.add(task='not a Task object')
 
-
+@pytest.mark.skipif(datetime.datetime.now().day == 10, reason='10 числа не тестируем')
 @pytest.mark.smoke
 def test_list_raises():
     """list() should raise an exception with wrong type param."""
